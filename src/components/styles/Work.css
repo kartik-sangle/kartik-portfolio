@@ -228,9 +228,13 @@
 }
 
 .work-image img {
-  max-width: 100%;
+  width: 100%;
+  aspect-ratio: 16/9;
   max-height: 400px;
+  object-fit: cover;
+  object-position: top;
   border-radius: 8px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
 /* ── Responsive ── */

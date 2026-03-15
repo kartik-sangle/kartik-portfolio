@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { DRACOLoader, GLTF, GLTFLoader } from "three-stdlib";
+import { DRACOLoader, GLTF, GLTFLoader, OBJLoader } from "three-stdlib";
 import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
 import { decryptFile } from "./decrypt";
 
@@ -57,6 +57,52 @@ const setCharacter = (
             character!.getObjectByName("footL")!.position.y = 3.36;
 
             // Monitor scale is handled by GsapScroll.ts animations
+
+            // Load and attach Glasses as GLB
+            loader.load(
+              '/models/Glasses.glb',
+              (glassesGltf) => {
+                const glasses = glassesGltf.scene;
+                
+                let headBone: THREE.Object3D | null = null;
+                character.traverse((child: any) => {
+                  if (child.isBone && child.name.toLowerCase().includes("head")) {
+                    headBone = child;
+                  }
+                });
+
+                if (headBone) {
+                  const targetBone = headBone as THREE.Object3D;
+                  
+                  // Apply a very dark shiny material to make it look like thick black rimmed glasses
+                  glasses.traverse((child: any) => {
+                    if (child.isMesh) {
+                      child.material = new THREE.MeshPhysicalMaterial({
+                        color: 0x050505, // Almost black
+                        roughness: 0.1,  // Very smooth/shiny
+                        metalness: 0.8,  // Slightly metallic look for plastic/metal frames
+                        clearcoat: 1.0,  // Hard reflection
+                      });
+                    }
+                  });
+
+                  // These sizing numbers are standard for attached GLBs but we will
+                  // keep them slightly large so they are guaranteed visible
+                  glasses.scale.set(0.15, 0.15, 0.15); 
+                  
+                  // Position them slightly forward on the Z axis relative to the head bone center
+                  glasses.position.set(0, 0, 0.05); 
+                  
+                  // Usually needs a 90 or 180 rotation depending on the export
+                  glasses.rotation.set(Math.PI / 2, 0, 0);
+
+                  targetBone.add(glasses);
+                  console.log("Glasses (GLB) successfully attached to", targetBone.name);
+                }
+              },
+              undefined,
+              (err) => console.error("Error loading Glasses GLB:", err)
+            );
 
             dracoLoader.dispose();
           },

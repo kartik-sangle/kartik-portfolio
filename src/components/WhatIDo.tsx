@@ -27,9 +27,9 @@ const WhatIDo = () => {
   return (
     <div className="whatIDO">
       <div className="what-box">
-        <h2 className="title">
-          W<span className="hat-h2">HAT</span>
-          <div>
+        <h2 className="title" style={{ display: "flex", flexDirection: "column" }}>
+          <span style={{ whiteSpace: "nowrap" }}>WHAT</span>
+          <div style={{ whiteSpace: "nowrap" }}>
             I<span className="do-h2"> DO</span>
           </div>
         </h2>
@@ -142,6 +142,44 @@ const WhatIDo = () => {
                 <div className="what-tags">REST APIs</div>
                 <div className="what-tags">Microservices</div>
                 <div className="what-tags">Python</div>
+              </div>
+              <div className="what-arrow"></div>
+            </div>
+          </div>
+          <div
+            className="what-content what-noTouch"
+            ref={(el) => setRef(el, 2)}
+          >
+            <div className="what-border1">
+              <svg height="100%">
+                <line
+                  x1="0"
+                  y1="100%"
+                  x2="100%"
+                  y2="100%"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeDasharray="6,6"
+                />
+              </svg>
+            </div>
+            <div className="what-corner"></div>
+            <div className="what-content-in">
+              <h3>S/W Testing</h3>
+              <h4>Automation Testing using Selenium</h4>
+              <p>
+                Building robust automated testing suites for web applications.
+                Specializing in end-to-end testing and performance validation.
+              </p>
+              <h5>Skillset & tools</h5>
+              <div className="what-content-flex">
+                <div className="what-tags">Selenium</div>
+                <div className="what-tags">Java</div>
+                <div className="what-tags">TestNG</div>
+                <div className="what-tags">Cypress</div>
+                <div className="what-tags">WebDriver</div>
+                <div className="what-tags">Unit Testing</div>
+                <div className="what-tags">Integration Testing</div>
               </div>
               <div className="what-arrow"></div>
             </div>

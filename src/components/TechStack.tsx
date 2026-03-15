@@ -22,7 +22,33 @@ const imageUrls = [
   "/images/typescript.webp",
   "/images/javascript.webp",
 ];
+
+const createTextTexture = (
+  text: string,
+  bgColor: string = "#00000000",
+  textColor: string = "#ffffff"
+) => {
+  const canvas = document.createElement("canvas");
+  canvas.width = 512;
+  canvas.height = 512;
+  const context = canvas.getContext("2d")!;
+  context.fillStyle = bgColor;
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
+  context.font = "bold 80px Geist, sans-serif";
+  context.textAlign = "center";
+  context.textBaseline = "middle";
+  context.fillStyle = textColor;
+  context.fillText(text, canvas.width / 2, canvas.height / 2);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.needsUpdate = true;
+  return texture;
+};
+
 const textures = imageUrls.map((url) => textureLoader.load(url));
+const seleniumTexture = createTextTexture("Selenium", "#ffffff", "#000000");
+const allTextures = [...textures, seleniumTexture];
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
@@ -152,7 +178,7 @@ const TechStack = () => {
     };
   }, []);
   const materials = useMemo(() => {
-    return textures.map(
+    return allTextures.map(
       (texture) =>
         new THREE.MeshPhysicalMaterial({
           map: texture,
@@ -167,7 +193,7 @@ const TechStack = () => {
   }, []);
 
   return (
-    <div className="techstack">
+    <div className="techstack" id="skills">
       <h2> My Techstack</h2>
 
       <Canvas

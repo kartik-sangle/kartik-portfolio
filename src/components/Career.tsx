@@ -2,11 +2,11 @@ import "./styles/Career.css";
 
 const Career = () => {
   return (
-    <div className="career-section section-container">
+    <div className="career-section section-container" id="activities">
       <div className="career-container">
         <h2>
-          My career <span>&</span>
-          <br /> experience
+          Extra-Curricular
+          <br /> <span>Activities</span>
         </h2>
         <div className="career-info">
           <div className="career-timeline">
@@ -15,43 +15,41 @@ const Career = () => {
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Full Stack Developer</h4>
-                <h5>Ikshan</h5>
+                <h4>Technical Head</h4>
+                <h5>Students' Council</h5>
               </div>
-              <h3>2020</h3>
+              <h3>2023 -<br />Present</h3>
             </div>
             <p>
-              Built 6+ complete applications using React.js. Integrated backend
-              authentication using Node.js & MongoDB. Created responsive UI/UX
-              and designed wireframes using Figma.
+              Led technical and creative operations for cultural events, managing media design,
+              printing, and digital promotions. Coordinated and guided technical teams to ensure
+              smooth execution, quality output, and timely event delivery.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Senior Full Stack Developer</h4>
-                <h5>Monocept (Max Life Insurance)</h5>
+                <h4>Associate Outreach Lead</h4>
+                <h5>Microsoft Learn Student Club (MLSC)</h5>
               </div>
-              <h3>2021</h3>
+              <h3>2024 -<br />Present</h3>
             </div>
             <p>
-              Led two development teams on Mpro, a large-scale insurance
-              operations platform. Developed multiple modules using React.js &
-              migrated critical functionalities to Node.js microservices.
+              Supported planning and execution of IT-focused educational events, workshops,
+              and technical sessions. Managed outreach initiatives, promotional designs,
+              and team coordination to increase student engagement.
             </p>
           </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Full Stack Developer</h4>
-                <h5>Logic Loop</h5>
+                <h4>Social Media Head</h4>
+                <h5>NSS Committee</h5>
               </div>
-              <h3>NOW</h3>
+              <h3>2024 -<br />Present</h3>
             </div>
             <p>
-              Building Solid, a proprietary low-code platform using Angular,
-              Next.js & NestJS. Delivering production-ready CMS-based projects
-              including e-commerce, CRM, and import-export automation systems.
+              SManaged the NSS committee’s digital presence across multiple social platforms. Planned content strategies, designed promotional posts, and coordinated online campaigns to increase engagement, promote social initiatives, and raise awareness for community service activities.
             </p>
           </div>
         </div>
